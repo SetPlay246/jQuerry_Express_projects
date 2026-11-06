@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Товары на складе</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Кнопка назад -->
+  <a href="/" class="btn btn-secondary" style="position: absolute; top: 120px; left: 50px;">← Назад</a>
+
+  <h1 style="text-align: center;">Управление товарами</h1>
+
+  <div class="toolbar">
+    <select id="filialSelect" class="input">
+      <option value="">Все склады</option>
+    </select>
+    <button id="btnAddStorage" class="btn">Добавить на склад</button>
+    <button id="btnNewProduct" class="btn">Создать новый товар</button>
+  </div>
+
+  <!-- Контейнер для списка товаров -->
+    <!-- Контейнер для списка товаров -->
+  <div class="table-wrapper">
+    <table class="products-table" id="productsTable">
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Описание</th>
+          <th>Цена</th>
+          <th>Количество</th>
+        </tr>
+      </thead>
+      <tbody id="productsContainer">
+        <tr><td colspan="4">Загрузка...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- МОДАЛ 1: Добавление на склад -->
+  <div id="modalStorage" class="modal">
+    <div class="modal-content">
+      <h2 id="modalStorageTitle">Добавить на склад</h2>
+      <form id="formStorage">
+        <input type="hidden" id="storageId" value="">
+        <label>Склад:</label>
+        <select id="formFilial" class="input" required></select>
+        
+        <label>Товар:</label>
+        <select id="formProduct" class="input" required></select>
+        
+        <label>Количество:</label>
+        <input type="number" id="formQuantity" class="input" min="1" required>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn">Сохранить</button>
+          <button type="button" class="btn btn-danger" onclick="closeModal('modalStorage')">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- МОДАЛ 2: Создание нового товара -->
+  <div id="modalProduct" class="modal">
+    <div class="modal-content">
+      <h2 id="modalProductTitle">Новый товар</h2>
+      <form id="formProductForm">
+        <input type="hidden" id="productId" value="">
+        <label>Название:</label>
+        <input type="text" id="formName" class="input" required>
+        
+        <label>Описание:</label>
+        <input type="text" id="formDesc" class="input">
+        
+        <label>Цена:</label>
+        <input type="number" id="formPrice" class="input" step="0.01" min="0" required>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn">Сохранить</button>
+          <button type="button" class="btn btn-danger" onclick="closeModal('modalProduct')">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- МОДАЛ 3: Изменение количества на складе -->
+  <div id="modalStorageEdit" class="modal">
+    <div class="modal-content">
+      <h2>Изменить остаток на складе</h2>
+      <form id="formStorageEdit">
+        <input type="hidden" id="editProductId" value="">
+        
+        <label>Склад:</label>
+        <select id="editFormFilial" class="input" required></select>
+        
+        <label>Новое количество:</label>
+        <input type="number" id="editFormQuantity" class="input" min="0" required>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn">Сохранить</button>
+          <button type="button" class="btn btn-danger" onclick="closeModal('modalStorageEdit')">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/products.js"></script>
+      <!-- футера -->
+  <script src="/footer.js"></script>
+</body>
+</html>

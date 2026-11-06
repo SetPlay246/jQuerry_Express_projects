@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Поставщики</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <a href="/" class="btn btn-secondary" style="position: absolute; top: 120px; left: 50px;">← Назад</a>
+
+  <h1 style="text-align: center;">Управление поставщиками</h1>
+
+  <div class="toolbar">
+    <select id="suplierSelect" class="input" style="width: 250px;"></select>
+    <button id="btnEditSuplier" class="btn" style="background: #3498db;">Изменить поставщика</button>
+    <button id="btnNewSuplier" class="btn">Добавить поставщика</button>
+  </div>
+
+  <div class="table-wrapper">
+    <h3 style="color: #4CAF50; margin-top: 0;">Товары поставщика:</h3>
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th style="width: 50px; text-align: center;">Есть</th>
+          <th>Название</th>
+          <th>Цена</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody id="productsContainer">
+        <tr><td colspan="4">Выберите поставщика...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- МОДАЛ: Поставщик (Создание/Редактирование) -->
+  <div id="modalSuplier" class="modal">
+    <div class="modal-content">
+      <h2 id="modalSuplierTitle">Поставщик</h2>
+      <form id="formSuplier">
+        <input type="hidden" id="suplierId" value="">
+        
+        <label>Название:</label>
+        <input type="text" id="formName" class="input" required>
+        
+        <label>Адрес:</label>
+        <input type="text" id="formAddress" class="input" required>
+        
+                <div class="modal-actions" style="display: flex; justify-content: space-between; align-items: center;">
+          <!-- Кнопка удаления (слева) -->
+          <button type="button" id="btnDeleteSuplier" class="btn btn-danger" style="display: none; margin-right: auto;">Удалить</button>
+          
+          <!-- Кнопки справа -->
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn btn-danger" onclick="closeModal('modalSuplier')">Отмена</button>
+            <button type="submit" id="btnSubmitSuplier" class="btn">Сохранить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/supliers.js"></script>
+      <!-- футера -->
+  <script src="/footer.js"></script>
+</body>
+</html>

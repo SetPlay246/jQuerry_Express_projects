@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Сотрудники</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <a href="/" class="btn btn-secondary" style="position: absolute; top: 120px; left: 50px;">← Назад</a>
+
+  <h1 style="text-align: center;">Управление сотрудниками</h1>
+
+  <div class="toolbar">
+    <select id="filialFilter" class="input">
+      <option value="">Все филиалы</option>
+    </select>
+    <button id="btnNewEmployee" class="btn">Новый сотрудник</button>
+  </div>
+
+  <!-- Таблица -->
+  <div class="table-wrapper">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th>ФИО</th>
+          <th>Должность</th>
+          <th>Филиал</th>
+          <th>Телефон</th>
+        </tr>
+      </thead>
+      <tbody id="employeesContainer">
+        <tr><td colspan="4">Загрузка...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- МОДАЛ: Добавление/Изменение -->
+  <div id="modalEmployee" class="modal">
+    <div class="modal-content" style="width: 500px;">
+      <h2 id="modalEmployeeTitle">Новый сотрудник</h2>
+      <form id="formEmployee">
+        <!-- Скрытые поля для ID -->
+        <input type="hidden" id="empId" value="">
+        <input type="hidden" id="peopleId" value="">
+        
+        <div style="display: flex; gap: 10px;">
+          <div style="flex: 1;">
+            <label>Имя:</label>
+            <input type="text" id="formFname" class="input" required>
+          </div>
+          <div style="flex: 1;">
+            <label>Фамилия:</label>
+            <input type="text" id="formLname" class="input" required>
+          </div>
+        </div>
+
+        <label>Телефон:</label>
+        <input type="text" id="formPhone" class="input">
+        
+        <label>Email:</label>
+        <input type="email" id="formEmail" class="input">
+
+        <label>Филиал:</label>
+        <select id="formFilial" class="input" required></select>
+
+        <label>Должность (Роль):</label>
+        <select id="formRole" class="input" required></select>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn">Сохранить</button>
+          <button type="button" class="btn btn-danger" onclick="closeModal('modalEmployee')">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/employees.js"></script>
+    <!-- футера -->
+  <script src="/footer.js"></script>
+</body>
+</html>

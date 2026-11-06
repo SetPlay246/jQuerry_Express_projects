@@ -1,0 +1,24 @@
+{
+  "name": "ejs2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "start:mini": "nodemon ./z9-express/server.js",
+    "start:db": "nodemon ./z10-sqlite/server.js",
+    "start:final": "nodemon ./z11-final/app.js",
+    "dev": "concurrently \"npm start\" \"npm run start:mini\" \"npm run start:db\" \"npm run start:final\""
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "nodemon": "^3.1.14"
+  }
+}

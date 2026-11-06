@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Филиалы</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Кнопка назад -->
+  <a href="/" class="btn btn-secondary" style="position: absolute; top: 120px; left: 50px;">← Назад</a>
+
+  <h1 style="text-align: center;">Управление филиалами</h1>
+
+  <div class="toolbar">
+    <button id="btnNewFilial" class="btn">Создать новый филиал</button>
+  </div>
+
+  <!-- Таблица филиалов -->
+  <div class="table-wrapper">
+    <table class="products-table"> <!-- Используем класс от таблицы товаров -->
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Адрес</th>
+          <th>Сотрудников</th>
+        </tr>
+      </thead>
+      <tbody id="filialsContainer">
+        <tr><td colspan="3">Загрузка...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- МОДАЛ: Добавление/Изменение филиала -->
+  <div id="modalFilial" class="modal">
+    <div class="modal-content">
+      <h2 id="modalFilialTitle">Новый филиал</h2>
+      <form id="formFilial">
+        <input type="hidden" id="filialId" value="">
+        
+        <label>Название:</label>
+        <input type="text" id="formName" class="input" required>
+        
+        <label>Адрес:</label>
+        <input type="text" id="formAddress" class="input" required>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn">Сохранить</button>
+          <button type="button" class="btn btn-danger" onclick="closeModal('modalFilial')">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/filials.js"></script>
+      <!-- футера -->
+  <script src="/footer.js"></script>
+</body>
+</html>

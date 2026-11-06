@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <script src="/javascripts/pubjs.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/z2s40.css">
+  <h1><%= title %></h1> 
+  <nav>
+    <a href="/z2" class="text-button">назад</a>
+   </nav>
+</head>
+<body>
+  <script src="/javascripts/z2s40.js"></script>
+  <p>задание за 20.04/2/40слайд</p>
+    <button id="startBtn" class="btn">Открыть калькулятор</button>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h2>Введите первое число</h2>
+      <input type="number" id="num1" placeholder="Например, 5">
+      <div class="modal-actions">
+        <button id="next1" class="btn">Далее</button>
+        <button id="cancel1" class="btn btn-cancel">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h2>Выберите операцию</h2>
+      <select id="operator">
+        <option value="+">Сложение (+)</option>
+        <option value="-">Вычитание (−)</option>
+        <option value="*">Умножение (×)</option>
+        <option value="/">Деление (÷)</option>
+      </select>
+      <div class="modal-actions">
+        <button id="next2" class="btn">Далее</button>
+        <button id="cancel2" class="btn btn-cancel">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h2>Введите второе число</h2>
+      <input type="number" id="num2" placeholder="Например, 3">
+      <div class="modal-actions">
+        <button id="calcBtn" class="btn">Вычислить</button>
+        <button id="cancel3" class="btn btn-cancel">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <h2>Результат</h2>
+      <p id="resultText" class="result"></p>
+      <div class="modal-actions">
+        <button id="closeResult" class="btn">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

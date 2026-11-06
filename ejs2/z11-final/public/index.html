@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Система учёта склада</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    
+  <h1>Управление складом</h1>
+  <p class="subtitle">Выберите раздел для работы с базой данных</p>
+
+  <div class="dashboard">
+    <!-- Кнопка 1: Товары -->
+    <div class="card" id="btnProducts">
+      <h2>📦 Товары</h2>
+      <p>Просмотр и добавление товаров</p>
+    </div>
+
+    
+    <!-- Кнопка 2: Филиалы -->
+    <div class="card" onclick="window.location.href='/filials.html'">
+      <h2>🏢 Филиалы</h2>
+      <p>Управление складами</p>
+    </div>
+    
+    <!-- Кнопка 3: Сотрудники -->
+    <div class="card" onclick="window.location.href='/employees.html'">
+      <h2>👥 Сотрудники</h2>
+      <p>Штат и роли</p>
+    </div>
+
+    <div class="card" onclick="window.location.href='/orders.html'">
+      <h2>📝 Заказы</h2>
+      <p>История и создание заказов</p>
+    </div>
+
+
+    <!-- поставщики -->
+    <div class="card" onclick="window.location.href='/supliers.html'">
+        <h2>🧱 Поставщики</h2>
+        <p>Управление поставщиками</p>
+    </div>
+  </div>
+
+  <!-- Скрытый блок для вывода данных -->
+  <div id="resultBox">
+    <button class="close-btn" onclick="document.getElementById('resultBox').style.display='none'">✖</button>
+    <h3 id="resultTitle" style="color: #4CAF50; margin-top: 0;">Результат:</h3>
+    <pre id="resultContent" style="color: #fff;"></pre>
+  </div>
+  <script src="/index.js"></script>
+      <!-- футера -->
+  <script src="/footer.js"></script>
+</body>
+</html>

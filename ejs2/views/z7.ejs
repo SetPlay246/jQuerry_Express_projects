@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практика DOM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .block {
+            border: 1px solid #999;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            background-color: #ffffcc;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+        }
+        input, button {
+            padding: 6px;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="text-button">назад</a>
+    <h1 id="main-title">Практическая работа с DOM</h1>
+
+    <div class="block" id="block1">
+        <h2>Задание 1. Изменение заголовка</h2>
+        <button id="btn-change-title">Изменить заголовок</button>
+    </div>
+
+    <div class="block" id="block2">
+        <h2>Задание 2. Работа с текстом</h2>
+        <p id="text-paragraph">Исходный текст абзаца.</p>
+        <button id="btn-change-text">Заменить текст</button>
+        <button id="btn-toggle-class">Переключить подсветку</button>
+    </div>
+
+    <div class="block" id="block3">
+        <h2>Задание 3. Форма ввода</h2>
+        <input type="text" id="name-input" placeholder="Введите имя">
+        <button id="btn-greet">Поприветствовать</button>
+        <p id="greeting-output"></p>
+    </div>
+
+    <div class="block" id="block4">
+        <h2>Задание 4. Список дел</h2>
+        <input type="text" id="task-input" placeholder="Новая задача">
+        <button id="btn-add-task">Добавить</button>
+        <ul id="task-list"></ul>
+    </div>
+
+    <div class="block" id="block5">
+        <h2>Задание 5. Счётчик</h2>
+        <p>Текущее значение: <span id="counter-value">0</span></p>
+        <button id="btn-increment">Увеличить</button>
+        <button id="btn-decrement">Уменьшить</button>
+        <button id="btn-reset">Сбросить</button>
+    </div>
+
+    <script src="/javascripts/z7.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.btn-cancel {
+  background-color: #e74c3c;
+}
+
+.btn-cancel:hover {
+  background-color: #c0392b;
+}
+
+.modal {
+  display: none;              
+  position: fixed;
+  inset: 0;                   
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: rgb(10, 12, 30);
+  padding: 25px 30px;
+  border-radius: 13px;
+  min-width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.modal-content h2 {
+  background: transparent;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.modal-actions {
+  background: transparent;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.result {
+  background: transparent;
+  font-size: 22px;
+  font-weight: bold;
+  color: #0e9611;
+  margin: 15px 0 20px;
+}

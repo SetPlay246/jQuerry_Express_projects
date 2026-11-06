@@ -1,0 +1,254 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1e1e24;
+  color: #fff;
+  padding: 40px;
+  text-align: center;
+  margin: 0;
+  
+  /* --- ПРИЖАТИЕ ФУТЕРА --- */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Это заставит основной контент занимать всё свободное место, 
+   выталкивая футер в самый низ */
+main, .content-wrapper {
+  flex: 1;
+}
+h1 { color: #4CAF50; margin-bottom: 10px; }
+p.subtitle { color: #aaa; margin-bottom: 40px; }
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #2b2b36;
+  padding: 25px;
+  border-radius: 10px;
+  width: 200px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: white;
+}
+.card:hover {
+  border-color: #4CAF50;
+  transform: translateY(-5px);
+  background: #333340;
+}
+.card h2 { margin-top: 0; font-size: 18px; color: #4CAF50; }
+.card p { font-size: 14px; color: #ccc; }
+/* Контейнер для вывода результатов */
+#resultBox {
+  margin-top: 40px;
+  padding: 20px;
+  background: #111;
+  border-radius: 8px;
+  text-align: left;
+  font-family: monospace;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+.close-btn {
+  float: right;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+    /* Модальные окна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal.active { display: flex; }
+
+.modal-content {
+  background: #2b2b36;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  border: 1px solid #4CAF50;
+}
+
+.modal-content h2 { margin-top: 0; color: #4CAF50; }
+.modal-content label { display: block; margin: 10px 0 5px; color: #ccc; }
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #1e1e24;
+  border: 1px solid #555;
+  color: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+.btn { padding: 10px 15px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.btn:hover { background: #45a049; }
+.btn-danger { background: #e74c3c; }
+.btn-danger:hover { background: #c0392b; }
+
+/* Тулбар */
+.toolbar {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.toolbar .input { width: 200px; margin-bottom: 0; }
+
+/* Обертка для таблицы (создает отступы и центрирует) */
+.table-wrapper {
+  max-width: 1000px;
+  margin: 0 auto; /* Центрируем по горизонтали */
+  background: #2b2b36; /* Темный фон под таблицей */
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Сама таблица */
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Заголовки таблицы */
+.products-table th {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 2px solid #4CAF50;
+  color: #4CAF50;
+  font-size: 16px;
+}
+
+/* Ячейки таблицы */
+.products-table td {
+  padding: 15px;
+  border-bottom: 1px solid #444;
+  font-size: 15px;
+}
+
+/* Эффект при наведении на строку (чтобы было видно, что на нее можно нажать) */
+.products-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.products-table tbody tr:hover {
+  background-color: #3a3a48;
+}
+
+/* Убираем нижнюю границу у последней строки */
+.products-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.site-footer {
+  margin-top: auto; /* Выталкивает футер в самый низ */
+  margin-left: -40px; /* Компенсируем padding у body, чтобы футер был от края до края */
+  margin-right: -40px;
+  margin-bottom: -40px; /* Убираем пустоту снизу */
+  
+  width: calc(100% + 80px); /* Растягиваем на всю ширину с учетом отступов body */
+  padding: 30px 20px;
+  
+  background: #111115;
+  border-top: 2px solid #4CAF50;
+  color: #777;
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Зона ниже футера*/
+body::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; /* Высота зоны под футером */
+  background: #0a0a0d; /* Самый темный цвет */
+  z-index: -1;
+}
+
+/* ================= ХЕДЕР ================= */
+.site-header {
+  /* Компенсируем padding у body (как мы делали с футером), чтобы шапка была от края до края */
+  margin: -40px -40px 30px -40px; 
+  width: calc(100% + 80px);
+  
+  background: #1a1a20; /* Темный фон шапки */
+  padding: 15px 30px;
+  border-bottom: 2px solid #4CAF50; /* Зеленая полоса снизу */
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center; /* Выравниваем по центру по вертикали */
+  gap: 20px; /* Расстояние между картинкой и текстом */
+  text-align: left;
+}
+
+.header-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain; /* Чтобы картинка не искажалась */
+  border-radius: 8px;
+}
+
+.header-titles h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #4CAF50;
+  line-height: 1.2;
+}
+.header-titles h2 {
+  margin: 0;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1;
+}
+
+.header-note {
+  display: inline-block;
+  margin-top: 5px;
+  color: #3498db; /* Синий цвет, чтобы было похоже на ссылку */
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.header-note:hover {
+  color: #2980b9; /* Темнеет при наведении */
+}
+
+.link-checkbox {
+  accent-color: #3498db;
+}
