@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
       orderItemsContainer.appendChild(tr);
     });
 
-    // Навешиваем обработчики на изменения количества (только если не просмотр)
+    // бработчики на изменения количества если не просмотр
     if (!isViewMode) {
       document.querySelectorAll('.qty-input').forEach(input => {
         input.addEventListener('input', recalculateTotal);
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const price = parseFloat(input.dataset.price) || 0;
       const subtotal = qty * price;
       
-      // Обновляем ячейку "Сумма" для этой строки
+      // Обновляем сумму
       input.closest('tr').querySelector('.subtotal').textContent = `${subtotal} ₽`;
       total += subtotal;
     });
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const statusText = order.IsConfirm ? "Завершен" : "В ожидании";
     
-    // Показываем красивую инфу сверху
+    // инфа сверху
     document.getElementById('orderReadOnlyInfo').style.display = 'block';
     document.getElementById('lblOrderDetails').innerHTML = `
       <b>От:</b> ${order.OrderDate} | 
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <b>Поставщик:</b> ${order.SuplierName}
     `;
     
-    // Скрываем выпадающие списки, так как мы просто смотрим
+    // Скрываем выпадающие списки, просмотр
     formFilial.parentElement.style.display = 'none';
     formSuplier.parentElement.style.display = 'none';
     document.getElementById('btnSubmitOrder').style.display = 'none';

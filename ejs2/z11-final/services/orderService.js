@@ -12,8 +12,8 @@ module.exports = {
     `).all(suplierId);
   },
 
-  // Получить все заказы (с фильтрацией по складу и поставщику)
-      // Получить всех поставщиков
+
+  // Получить всех поставщиков
   getSupliers: () => {
     return db.prepare('SELECT * FROM Supliers').all();
   },
@@ -115,7 +115,6 @@ module.exports = {
       });
 
       // Помечаем заказ как выполненный
-      // Используем обычный CURRENT_TIMESTAMP, он работает в SQLite без проблем
       db.prepare('UPDATE "Order" SET IsConfirm = 1, ConfirmDate = CURRENT_TIMESTAMP WHERE Id = ?').run(orderId);
 
       db.exec('COMMIT');

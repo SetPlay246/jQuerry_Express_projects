@@ -274,7 +274,6 @@ const server = http.createServer(async (req, res) => {
   } catch (err) {
     console.error('Ошибка сервера:', err.message);
     res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
-    // Показываем реальную ошибку в браузере
     return res.end(JSON.stringify({ error: err.message })); 
   }
 

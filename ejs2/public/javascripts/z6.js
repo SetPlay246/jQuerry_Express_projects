@@ -25,7 +25,7 @@ function sumFromstr(str) {
     }, 0);
   }
 
-  // ===== Функция getUniqueElements =====
+  // поличение елементов
   function getUniqueElements(arr) {
     if (!Array.isArray(arr)) {
       throw new Error('Аргумент должен быть массивом');
@@ -33,7 +33,7 @@ function sumFromstr(str) {
 
     const result = [];
     for (let i = 0; i < arr.length; i++) {
-      // indexOf использует строгое === (и не находит NaN, как и ===)
+      // использует строгое === и не находит NaN, как и ===
       if (result.indexOf(arr[i]) === -1) {
         result.push(arr[i]);
       }

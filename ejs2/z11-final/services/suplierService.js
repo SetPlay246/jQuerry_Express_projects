@@ -26,7 +26,7 @@ module.exports = {
     return db.prepare('DELETE FROM Supliers WHERE Id = ?').run(id);
   },
 
-  // Получить ВСЕ товары + флаг, есть ли они у конкретного поставщика
+  // Получить ВСЕ товары + галка, есть ли они у конкретного поставщика
   getProductsWithLinks: (suplierId) => {
     return db.prepare(`
       SELECT p.Id, p.Name, p.Price, p.Description,

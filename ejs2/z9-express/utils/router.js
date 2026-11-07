@@ -33,7 +33,7 @@ function handleRequest(req, res) {
     return;
   }
 
-  // все остальное — 404
+  // все остальное 404
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
   res.end('Not Found');
 }

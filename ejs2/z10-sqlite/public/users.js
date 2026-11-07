@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const container = document.getElementById('usersContainer');
 
-  // ===== Загрузка списка =====
+  // загрузка списка
   async function loadUsers() {
     if (!container) return;
     container.innerHTML = '<p>Загрузка...</p>';
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // ===== Добавление =====
+  // добавление
   const addBtn = document.getElementById('addUserBtn');
   if (addBtn) {
     addBtn.addEventListener('click', async function () {
@@ -79,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ===== Обновить =====
+  // обновление
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
     refreshBtn.addEventListener('click', loadUsers);
   }
 
-  // ===== Старт =====
+  // 
   loadUsers();
 
 });

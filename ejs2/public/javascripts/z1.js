@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById('myBtn');
   if (btn) {
     btn.addEventListener('click', function () {
-      //alert('Кнопка нажата! JS работает.');
+      //alert('Кнопка нажата!');
     
         let x = 5;
         let y = 7;

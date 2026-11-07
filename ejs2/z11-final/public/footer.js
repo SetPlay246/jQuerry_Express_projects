@@ -1,24 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Создаем элемент footer
+  // footer
   const footer = document.createElement('footer');
-  footer.className = 'site-footer'; // Класс для стилей
-
-  // Пишем здесь любой текст или ссылки
+  footer.className = 'site-footer';
   footer.innerHTML = `
     <p>06.11.2026 Система управления складом. Никакие права не защищены.</p>
     <p>Разработано Захаровым Артемом РПО4 не без помощи ИИ.</p>
   `;
-
-  // Добавляем футер в самый конец тега <body>
   document.body.appendChild(footer);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Создаем контейнер для хедера
+  //хедер
   const header = document.createElement('header');
   header.className = 'site-header';
 
-  // Внутреннее наполнение шапки
   header.innerHTML = `
     <div class="header-left">
       <img src="/Icon.png" alt="Иконка склада" class="header-logo">
@@ -30,10 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `;
 
-  // Вставляем хедер в самое начало <body>
   document.body.prepend(header);
 
-  // Добавляем обработчик клика на "Записку"
   const note = document.getElementById('headerNote');
   if (note) {
     note.addEventListener('click', () => {

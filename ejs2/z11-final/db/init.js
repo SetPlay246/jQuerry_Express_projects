@@ -118,17 +118,15 @@ function initDatabase() {
 
   console.log('Все таблицы успешно созданы.');
 
-  // ==========================================
-  // ЗАПОЛНЕНИЕ ТЕСТОВЫМИ ДАННЫМИ (Идемпотентно)
-  // ==========================================
+  // инсерты 
   
-  // Проверяем, есть ли уже данные (например, в таблице Ролей)
+  // проверка, роли не могут быть путы, если они пусты значит и бд пуста
   const roleCount = db.prepare('SELECT COUNT(*) as count FROM Roles').get();
 
   if (roleCount.count === 0) {
     console.log('Заполнение базы тестовыми данными...');
     
-    // Используем транзакцию для скорости и безопасности
+    // транзакция для скорости и безопасности
     db.exec('BEGIN TRANSACTION;');
 
     try {
@@ -177,23 +175,23 @@ function initDatabase() {
 
       // 7. Товары поставщиков
       const insertSupProd = db.prepare('INSERT INTO SupliersProducts (ProductId, SuplierId) VALUES (?, ?)');
-      insertSupProd.run(1, 1); // Монитор от ТехноСнаб
-      insertSupProd.run(3, 1); // Монитор от ТехноСнаб
-      insertSupProd.run(2, 2); // Клавиатура от Поставкина
+      insertSupProd.run(1, 1);
+      insertSupProd.run(3, 1);
+      insertSupProd.run(2, 2);
 
       // 8. Остатки на складах
       const insertStorage = db.prepare('INSERT INTO FilialsStorage (FilialId, ProductId, Quantity) VALUES (?, ?, ?)');
-      insertStorage.run(1, 1, 50); // 50 мониторов на Главном складе
-      insertStorage.run(1, 2, 100); // 100 клавиатур на Главном складе
-      insertStorage.run(2, 2, 20); // 20 клавиатур в Южном филиале
+      insertStorage.run(1, 1, 50);
+      insertStorage.run(1, 2, 100);
+      insertStorage.run(2, 2, 20);
 
       // 9. Заказы
       // const insertOrder = db.prepare('INSERT INTO "Order" (FilialId, SuplierId, OrderDate) VALUES (?, ?, ?)');
-      // insertOrder.run(1, 1, '2026-11-05 10:00:00'); // Заказ для Главного склада от ТехноСнаб
+      // insertOrder.run(1, 1, '2026-11-05 10:00:00');
 
       // 10. Состав заказа
       // const insertOrderProd = db.prepare('INSERT INTO OrderProducts (OrderId, SupProductId, Quantity) VALUES (?, ?, ?)');
-      // insertOrderProd.run(1, 1, 10); // Заказали 10 мониторов (SupProductId=1)
+      // insertOrderProd.run(1, 1, 10);
 
       db.exec('COMMIT;');
       console.log('✅ Тестовые данные успешно добавлены.');

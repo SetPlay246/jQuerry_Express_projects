@@ -3,14 +3,14 @@ const process = require('node:process');
 const logger = require('./utils/logger');
 const { handleRequest } = require('./utils/router');
 
-// Порт из переменной окружения или 3001 (чтобы не конфликтовать с основным Express на 3000)
+// Порт
 const PORT = process.env.PORT || 3001;
 
 const server = http.createServer((req, res) => {
-  // Логируем каждый запрос
+  // логирование каждого запроса
   logger.emit('log', `${req.method} ${req.url}`);
 
-  // Передаём управление роутеру
+  // передача управление роутеру
   handleRequest(req, res);
 });
 
@@ -19,7 +19,7 @@ server.listen(PORT, () => {
   logger.emit('log', `Server started on port ${PORT}`);
 });
 
-// Корректное завершение
+// завершение
 process.on('exit', (code) => {
   console.log(`Процесс завершается с кодом ${code}`);
 });

@@ -12,7 +12,7 @@
 
   <div class="dashboard">
     <!-- Кнопка 1: Товары -->
-    <div class="card" id="btnProducts">
+    <div class="card" onclick="window.location.href='/products.html'">
       <h2>📦 Товары</h2>
       <p>Просмотр и добавление товаров</p>
     </div>
@@ -43,13 +43,13 @@
     </div>
   </div>
 
-  <!-- Скрытый блок для вывода данных -->
+  <!-- -->
   <div id="resultBox">
     <button class="close-btn" onclick="document.getElementById('resultBox').style.display='none'">✖</button>
     <h3 id="resultTitle" style="color: #4CAF50; margin-top: 0;">Результат:</h3>
     <pre id="resultContent" style="color: #fff;"></pre>
   </div>
-  <script src="/index.js"></script>
+  <!-- <script src="/index.js"></script> -->
       <!-- футера -->
   <script src="/footer.js"></script>
 </body>

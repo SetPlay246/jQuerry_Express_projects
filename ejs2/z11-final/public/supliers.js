@@ -38,20 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== 2. ЗАГРУЗКА ТОВАРОВ (С РАДИОКНОПКАМИ) =====
-    // ===== 2. ЗАГРУЗКА ТОВАРОВ (С РАДИОКНОПКАМИ) =====
+  // ===== 2. ЗАГРУЗКА ТОВАРОВ с галками =====
   async function loadProducts(suplierId) {
     if (!suplierId) return;
     
     productsContainer.innerHTML = '<tr><td colspan="4">Загрузка...</td></tr>';
     
     try {
-      // БЫЛО: /linked-products (для заказов)
-      // СТАЛО: /products (для страницы поставщиков, здесь есть и Id, и IsLinked)
       const res = await fetch(`/api/supliers/${suplierId}/products`); 
       const products = await res.json();
-      
-      // ... остальной код без изменений
       
       productsContainer.innerHTML = '';
       if (products.length === 0) {
@@ -86,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           
           if (!res.ok) {
-            // Показываем реальную ошибку с сервера
             const errData = await res.json();
             alert('Ошибка: ' + (errData.error || res.statusText)); 
             e.target.checked = !e.target.checked;
@@ -106,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProducts(e.target.value);
   });
 
-  // Кнопка "Добавить поставщика"
+  // Кнопка добавить поставщика
   document.getElementById('btnNewSuplier').addEventListener('click', () => {
     modalSuplierTitle.textContent = 'Новый поставщик';
     suplierIdInput.value = '';
@@ -116,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
     openModal('modalSuplier');
   });
 
-  // Кнопка "Изменить поставщика"
+  // Кнопка изменить поставщика
   document.getElementById('btnEditSuplier').addEventListener('click', async () => {
     const id = suplierSelect.value;
     if (!id) return alert('Нет выбранного поставщика');
 
-    // Запрашиваем данные текущего поставщика
+    // данные текущего поставщика
     const res = await fetch('/api/supliers');
     const supliers = await res.json();
     const current = supliers.find(s => s.Id == id);
@@ -132,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       formName.value = current.Name;
       formAddress.value = current.Address;
       
-      btnDeleteSuplier.style.display = 'block'; // Показываем удаление
+      btnDeleteSuplier.style.display = 'block';
       btnSubmitSuplier.textContent = 'Изменить';
       openModal('modalSuplier');
     }

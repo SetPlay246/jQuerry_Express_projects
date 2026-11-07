@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <td style="color: #4CAF50; font-weight: bold;">${qText}</td>
         `;
 
-        // ===== ОБНОВЛЕННАЯ ЛОГИКА КЛИКА =====
+        // клик по елементу
         tr.addEventListener('click', async () => {
-          // 1. Спрашиваем: что делаем?
+          //  промт
           const action = prompt(
             `Товар: ${p.Name}\n\n` +
             `1 — УДАЛИТЬ или ИЗМЕНИТЬ САМ ТОВАР\n` +
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
           );
 
           if (action === '1') {
-            // Работаем с самим товаром
+            // работа с товаром
             const subAction = prompt(`Товар: ${p.Name}\n1 — Удалить товар целиком\n2 — Изменить название/цену`);
             
             if (subAction === '1') {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
           } else if (action === '2') {
-            // Работаем со складами
+            // работа с складами
             const subAction = prompt(`Остатки: ${p.Name}\n1 — Обнулить на ВСЕХ складах\n2 — Задать точное количество на КОНКРЕТНОМ складе`);
             
             if (subAction === '1') {
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`/api/storage/${p.Id}`, { method: 'DELETE' }).then(() => loadProducts());
               }
             } else if (subAction === '2') {
-              // Открываем модалку изменения остатка
+              // открытие модалки изменения колва
               document.getElementById('editProductId').value = p.Id;
               document.getElementById('editFormQuantity').value = '0';
               
-              // Заполняем селект складов
+              // селект складов
               const resF = await fetch('/api/filials');
               const filials = await resF.json();
               const editSelect = document.getElementById('editFormFilial');
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 editSelect.innerHTML += `<option value="${f.Id}">${f.Name}</option>`;
               });
 
-              // Если в фильтре выбран склад, сразу ставим его
+              // выбран склад, ставим его
               if (filialSelect.value) editSelect.value = filialSelect.value;
 
               openModal('modalStorageEdit');
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
   });
 
-  // ===== НОВАЯ ФОРМА: Изменение остатка =====
+  // ===== Изменение колва =====
   document.getElementById('formStorageEdit').addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {

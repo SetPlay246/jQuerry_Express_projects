@@ -5,7 +5,7 @@ const { DatabaseSync } = require('node:sqlite');
 
 const PORT = process.env.DB_PORT || 3002;
 
-// ===== База данных =====
+// бд
 const dbPath = path.join(__dirname, 'database.db');
 const db = new DatabaseSync(dbPath);
 db.exec(`
@@ -15,7 +15,7 @@ db.exec(`
   )
 `);
 
-// ===== MIME-типы для статики =====
+// возможные для раздачи форматы
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.js':   'application/javascript; charset=utf-8',
@@ -23,12 +23,12 @@ const MIME = {
   '.json': 'application/json; charset=utf-8'
 };
 
-// ===== Раздача статики из public/ =====
+// раздача из public
 function serveStatic(req, res, urlPath) {
   const filePath = path.join(__dirname, 'public', urlPath);
   const ext = path.extname(filePath);
 
-  if (!MIME[ext]) return false;   // не статика — пусть обрабатывает роутер
+  if (!MIME[ext]) return false;   // если не пусть обрабатывает роутер
 
   try {
     const data = fs.readFileSync(filePath);
@@ -40,14 +40,14 @@ function serveStatic(req, res, urlPath) {
   }
 }
 
-// ===== Сервер =====
+// сервак
 const server = http.createServer((req, res) => {
   const urlPath = req.url.split('?')[0];   // отбрасываем query
 
-  // --- Статика: /users.js, /style.css и т.д. ---
+  // тип /users.js, /style.css и тд
   if (urlPath !== '/' && serveStatic(req, res, urlPath)) return;
 
-  // --- HTML-страница /users ---
+  // HTML users
   if (urlPath === '/users' && req.method === 'GET') {
     try {
       const html = fs.readFileSync(path.join(__dirname, 'public', 'users.html'));
@@ -60,7 +60,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // --- API: GET /api/users ---
+  // API GET /api/users
   if (urlPath === '/api/users' && req.method === 'GET') {
     const rows = db.prepare('SELECT * FROM users').all();
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
@@ -68,7 +68,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // --- API: POST /api/users ---
+  // API POST /api/users
   if (urlPath === '/api/users' && req.method === 'POST') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
@@ -92,7 +92,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // --- Всё остальное — 404 ---
+  // 404
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
   res.end('Not Found');
 });
